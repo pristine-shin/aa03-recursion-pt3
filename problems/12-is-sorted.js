@@ -10,7 +10,6 @@ isSorted([2, 4, 6, 7, 8]); // true
 isSorted([5, 4, 3, 2, 1]); // false
 ***********************************************************************/
 
-
 function isSorted(arr) {
   if (arr.length < 2) {
     return true;
