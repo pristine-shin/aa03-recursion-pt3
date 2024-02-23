@@ -16,17 +16,32 @@ console.log(flatten([[[[]]]]), []) // [];
 i want to destructure each time?
 ***********************************************************************/
 
-function flatten(arr) {
-  if (arr.length === 0) {
-    return arr
-  }
-  if (!Array.isArray(arr[0])) {
-    return [arr[0], ...flatten(arr.slice(1))];
-  } else {
-    return [...flatten(arr[0]), ...flatten(arr.slice(1))]
-  }
-}
+// function flatten(arr) {
+//   if (arr.length === 0) {
+//     return arr
+//   }
+//   if (!Array.isArray(arr[0])) {
+//     return [arr[0], ...flatten(arr.slice(1))];
+//   } else {
+//     return [...flatten(arr[0]), ...flatten(arr.slice(1))]
+//   }
+// }
 
+//Alex's solution:
+function flatten(arr) {
+  let result = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    let item = arr[i];
+
+    if (Array.isArray(item)) {
+      result.push(...flatten(item))
+    } else {
+      result.push(item)
+    }
+  }
+  return result;
+}
 // let arr = [[1, 2], [3, [4, 5]]]
 // console.log(...arr)
 // debugger
